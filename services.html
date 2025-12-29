@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CodeVertex.in - Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* ---------------- BASE ---------------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+      body {
+        background: #0f123a;
+        color: white;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ---------------- HEADER ---------------- */
+      header {
+        background: #1b1f5a;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* ---------------- HERO ---------------- */
+      .hero {
+        text-align: center;
+        padding: 100px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        color: #6f7cff;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        color: #ccc;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* ---------------- SERVICES ACCORDION ---------------- */
+      .about {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .about h2 {
+        font-size: 2rem;
+        color: #6f7cff;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .accordion {
+        background: #1b1f5a;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        padding: 20px;
+        transition: 0.3s;
+      }
+      .accordion.active {
+        background: #6f7cff;
+        color: #000;
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: #272c5f;
+        border-radius: 0 0 10px 10px;
+        padding: 0 20px;
+      }
+      .accordion-content p {
+        padding: 20px 0;
+        color: #ccc;
+      }
+
+      /* ---------------- SERVICES CARDS ---------------- */
+      .services-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        padding: 50px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .service-card {
+        background: #1b1f5a;
+        border-radius: 15px;
+        width: 23%;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+      }
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      }
+      .service-card img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border-radius: 50%;
+      }
+      .service-card h3 {
+        margin-bottom: 10px;
+      }
+      .service-card p {
+        font-size: 0.95rem;
+        color: #ccc;
+      }
+
+      /* ---------------- STATS ---------------- */
+      .stats {
+        padding: 80px 20px;
+        background: #1b1f5a;
+        text-align: center;
+      }
+      .stats h2 {
+        color: #6f7cff;
+        margin-bottom: 50px;
+      }
+      .stats-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+      }
+      .stat {
+        flex: 1 1 200px;
+        background: #272c5f;
+        border-radius: 15px;
+        padding: 30px;
+        font-size: 2rem;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+      .stat:hover {
+        transform: scale(1.1);
+      }
+
+      /* ---------------- FOOTER ---------------- */
+      footer {
+        background: #0f123a;
+        text-align: center;
+        padding: 40px 20px;
+        color: #ccc;
+        margin-top: 60px;
+      }
+
+      /* ---------------- RESPONSIVE ---------------- */
+      @media (max-width: 1024px) {
+        .service-card {
+          width: 48%;
+        }
+      }
+      @media (max-width: 600px) {
+        .service-card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="Logo" />
+        CodeVertex.in
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Our Services</h1>
+      <p>
+        Discover the wide range of digital solutions we offer to empower
+        businesses worldwide.
+      </p>
+    </section>
+
+    <!-- Services Accordion -->
+    <section class="about">
+      <h2>Service Details</h2>
+      <div class="accordion">Website Development</div>
+      <div class="accordion-content">
+        <p>
+          Responsive, fast, and modern websites tailored to your business needs.
+        </p>
+      </div>
+
+      <div class="accordion">Admin Panel Creation</div>
+      <div class="accordion-content">
+        <p>Efficient admin panels to manage your operations effortlessly.</p>
+      </div>
+
+      <div class="accordion">ERP Solutions</div>
+      <div class="accordion-content">
+        <p>
+          Custom ERP systems to streamline your internal business processes.
+        </p>
+      </div>
+
+      <div class="accordion">Custom Software</div>
+      <div class="accordion-content">
+        <p>
+          Software solutions built specifically to meet your unique
+          requirements.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Cards -->
+    <section class="services-cards">
+      <div class="service-card">
+        <img
+          src="a.webp"
+          alt="Web Dev"
+        />
+        <h3>Website Development</h3>
+        <p>Modern websites that are responsive, fast, and visually stunning.</p>
+      </div>
+      <div class="service-card">
+        <img
+          src="a.webp"
+          alt="Admin Panel"
+        />
+        <h3>Admin Panel Creation</h3>
+        <p>
+          User-friendly admin panels for effortless management of your business.
+        </p>
+      </div>
+      <div class="service-card">
+        <img
+          src="a.webp"
+          alt="ERP"
+        />
+        <h3>ERP Solutions</h3>
+        <p>
+          Streamline your operations with custom ERP systems tailored for you.
+        </p>
+      </div>
+      <div class="service-card">
+        <img
+          src="a.webp"
+          alt="Custom Software"
+        />
+        <h3>Custom Software</h3>
+        <p>
+          Software solutions designed specifically to meet your unique needs.
+        </p>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <h2>Our Achievements</h2>
+      <div class="stats-grid">
+        <div class="stat" data-target="20">0<br />Projects</div>
+        <div class="stat" data-target="10">0<br />Clients</div>
+        <div class="stat" data-target="5">0<br />Team Members</div>
+        <div class="stat" data-target="2">0<br />Awards</div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 CodeVertex.in | All rights reserved.</footer>
+
+    <!-- JS INTERACTIVITY -->
+    <script>
+      // Accordion
+      const accordions = document.querySelectorAll(".accordion");
+      accordions.forEach((acc) => {
+        acc.addEventListener("click", () => {
+          acc.classList.toggle("active");
+          const panel = acc.nextElementSibling;
+          panel.style.maxHeight = panel.style.maxHeight
+            ? null
+            : panel.scrollHeight + "px";
+        });
+      });
+
+      // Animated Stats
+      const stats = document.querySelectorAll(".stat");
+      stats.forEach((stat) => {
+        const updateCount = () => {
+          const target = +stat.getAttribute("data-target");
+          const count = +stat.innerText.split("\n")[0];
+          const increment = target / 100;
+          if (count < target) {
+            stat.innerHTML = `${Math.ceil(count + increment)}<br>${
+              stat.innerHTML.split("<br>")[1]
+            }`;
+            setTimeout(updateCount, 20);
+          } else {
+            stat.innerHTML = `${target}<br>${stat.innerHTML.split("<br>")[1]}`;
+          }
+        };
+        updateCount();
+      });
+    </script>
+  </body>
+</html>

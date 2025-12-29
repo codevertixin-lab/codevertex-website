@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CodeVertex.in - Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* ---------------- BASE ---------------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+      body {
+        background: #0f123a;
+        color: white;
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      /* ---------------- HEADER ---------------- */
+      header {
+        background: #1b1f5a;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* ---------------- HERO ---------------- */
+      .hero {
+        padding: 100px 20px;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        color: #6f7cff;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        color: #ccc;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* ---------------- CONTACT INFO ---------------- */
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        padding: 50px 20px;
+      }
+      .info-card {
+        background: #1b1f5a;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        width: 250px;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+      .info-card:hover {
+        transform: translateY(-10px);
+      }
+      .info-card h3 {
+        margin-bottom: 10px;
+        color: #6f7cff;
+      }
+      .info-card p {
+        color: #ccc;
+      }
+
+      /* ---------------- CONTACT FORM ---------------- */
+      .contact-form-section {
+        padding: 50px 20px;
+        background: #1b1f5a;
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 15px;
+      }
+      .contact-form-section h2 {
+        color: #6f7cff;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        padding: 15px;
+        border-radius: 10px;
+        border: none;
+        font-size: 1rem;
+      }
+      .contact-form textarea {
+        resize: none;
+        height: 150px;
+      }
+      .contact-form button {
+        background: #6f7cff;
+        color: #000;
+        border: none;
+        padding: 15px;
+        font-weight: 600;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .contact-form button:hover {
+        transform: scale(1.05);
+      }
+
+      /* ---------------- MAP ---------------- */
+      .map-section {
+        margin: 50px 0;
+        text-align: center;
+      }
+      .map-section iframe {
+        width: 90%;
+        height: 400px;
+        border: 0;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ---------------- STATS ---------------- */
+      .stats {
+        padding: 80px 20px;
+        text-align: center;
+      }
+      .stats h2 {
+        color: #6f7cff;
+        margin-bottom: 50px;
+      }
+      .stats-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+      }
+      .stat {
+        flex: 1 1 200px;
+        background: #272c5f;
+        border-radius: 15px;
+        padding: 30px;
+        font-size: 2rem;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+      .stat:hover {
+        transform: scale(1.1);
+      }
+      .stat p {
+        color: #ccc;
+        font-size: 1rem;
+        margin-top: 10px;
+      }
+
+      /* ---------------- FOOTER ---------------- */
+      footer {
+        background: #0f123a;
+        text-align: center;
+        padding: 40px 20px;
+        color: #ccc;
+        margin-top: 60px;
+      }
+
+      /* ---------------- RESPONSIVE ---------------- */
+      @media (max-width: 1024px) {
+        .info-card {
+          width: 48%;
+        }
+        .stat {
+          flex: 1 1 45%;
+        }
+      }
+      @media (max-width: 600px) {
+        .info-card {
+          width: 100%;
+        }
+        .stat {
+          flex: 1 1 100%;
+        }
+      }
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: #1b1f5a;
+        color: #6f7cff;
+        padding: 20px 40px;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .popup.show {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="Logo" />
+        CodeVertex.in
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Contact Us</h1>
+      <p>
+        Have a question or project in mind? Reach out to us and let’s make
+        something amazing together.
+      </p>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+      <div class="info-card">
+        <h3>Phone</h3>
+        <p>Phone: <a href="tel:+917579792485">+91 75797 92485</a></p>
+      </div>
+      <div class="info-card">
+        <h3>Email</h3>
+        <a href="mailto:codevertex.in@gmail.com">codevertex.in@gmail.com</a>
+      </div>
+      <div class="info-card">
+        <h3>Address</h3>
+        <p>Pilibhit, Uttar Pradesh, India</p>
+      </div>
+      <div class="info-card">
+        <h3>Support</h3>
+        <p>codevertex.in@gmail.com</p>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+      <h2>Send Us a Message</h2>
+      <form class="contact-form" id="contactForm">
+        <!-- Title for template -->
+
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="title" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+
+        <!-- Hidden timestamp -->
+        <input type="hidden" name="time" id="timeField" />
+
+        <button type="submit">Send Message</button>
+        <div id="formMessage" class="form-message"></div>
+      </form>
+    </section>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      // Initialize EmailJS
+      emailjs.init("40pTJzuWcYVnzQrcg"); // Your public key
+
+      const form = document.getElementById("contactForm");
+      const formMessage = document.getElementById("formMessage");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Fill timestamp
+        document.getElementById("timeField").value =
+          new Date().toLocaleString();
+
+        // Send email
+        emailjs
+          .sendForm(
+            "service_k4x20hi", // Your Service ID
+            "template_gb2alsw", // Your Template ID
+            form
+          )
+          .then(
+            function (response) {
+              console.log("SUCCESS", response.status, response.text);
+              form.reset();
+
+              // Show themed popup
+              const popup = document.getElementById("successPopup");
+              popup.innerHTML =
+                "✅ Message sent successfully! We will get back to you shortly.";
+              popup.classList.add("show");
+
+              setTimeout(() => {
+                popup.classList.remove("show");
+              }, 3000);
+            },
+            function (error) {
+              console.error("FAILED", error);
+              const popup = document.getElementById("successPopup");
+              popup.innerHTML = "❌ Failed to send message. Please try again.";
+              popup.classList.add("show");
+
+              setTimeout(() => {
+                popup.classList.remove("show");
+              }, 3000);
+            }
+          );
+      });
+    </script>
+
+    <!-- Map -->
+    <section class="map-section">
+      <iframe
+        src="https://maps.google.com/maps?q=Pilibhit&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        allowfullscreen
+      ></iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 CodeVertex.in | All rights reserved.</footer>
+
+    <!-- JS -->
+    <script>
+      // Animated Stats
+      const stats = document.querySelectorAll(".stat");
+      stats.forEach((stat) => {
+        const updateCount = () => {
+          const target = +stat.getAttribute("data-target");
+          const count = +stat.innerText.split("\n")[0];
+          const increment = target / 100;
+          if (count < target) {
+            stat.innerHTML = `${Math.ceil(count + increment)}<p>${
+              stat.querySelector("p").innerText
+            }</p>`;
+            setTimeout(updateCount, 20);
+          } else {
+            stat.innerHTML = `${target}<p>${
+              stat.querySelector("p").innerText
+            }</p>`;
+          }
+        };
+        updateCount();
+      });
+    </script>
+    <!-- Success Popup -->
+    <div id="successPopup" class="popup">
+      <p>✅ Message sent successfully! We will get back to you shortly.</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CodeVertex.in - Company</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* ---------------- BASE ---------------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+      body {
+        background: #0f123a;
+        color: white;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ---------------- HEADER ---------------- */
+      header {
+        background: #1b1f5a;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* ---------------- HERO ---------------- */
+      .hero {
+        text-align: center;
+        padding: 100px 20px 60px;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        color: #6f7cff;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        color: #ccc;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* ---------------- ABOUT US ---------------- */
+      .about {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .about h2 {
+        font-size: 2rem;
+        color: #6f7cff;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .accordion {
+        background: #1b1f5a;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        padding: 20px;
+        transition: 0.3s;
+      }
+      .accordion.active {
+        background: #6f7cff;
+        color: #000;
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: #272c5f;
+        border-radius: 0 0 10px 10px;
+        padding: 0 20px;
+      }
+
+      .accordion-content p {
+        padding: 20px 0;
+        color: #ccc;
+      }
+
+      /* ---------------- TEAM ---------------- */
+      .team {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .team h2 {
+        text-align: center;
+        color: #6f7cff;
+        margin-bottom: 40px;
+      }
+      .team-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+      }
+      .team-card {
+        background: #1b1f5a;
+        border-radius: 15px;
+        overflow: hidden;
+        width: 23%;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+      }
+      .team-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+      .team-card h3 {
+        margin: 15px 0 5px;
+      }
+      .team-card p {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin-bottom: 15px;
+      }
+      .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      /* ---------------- TIMELINE ---------------- */
+      .timeline {
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .timeline h2 {
+        text-align: center;
+        color: #6f7cff;
+        margin-bottom: 50px;
+      }
+      .timeline-item {
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 40px;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background: #6f7cff;
+        border-radius: 50%;
+      }
+      .timeline-item h3 {
+        font-size: 1.2rem;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+      .timeline-item p {
+        color: #ccc;
+      }
+
+      /* ---------------- STATS ---------------- */
+      .stats {
+        padding: 80px 20px;
+        background: #1b1f5a;
+        text-align: center;
+      }
+      .stats h2 {
+        color: #6f7cff;
+        margin-bottom: 50px;
+      }
+      .stats-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+      }
+      .stat {
+        flex: 1 1 200px;
+        background: #272c5f;
+        border-radius: 15px;
+        padding: 30px;
+        font-size: 2rem;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+      .stat:hover {
+        transform: scale(1.1);
+      }
+
+      /* ---------------- FOOTER ---------------- */
+      footer {
+        background: #0f123a;
+        text-align: center;
+        padding: 40px 20px;
+        color: #ccc;
+        margin-top: 60px;
+      }
+
+      /* ---------------- RESPONSIVE ---------------- */
+      @media (max-width: 1024px) {
+        .team-card,
+        .work-card {
+          width: 48%;
+        }
+      }
+      @media (max-width: 600px) {
+        .team-card,
+        .work-card {
+          width: 100%;
+        }
+      }
+      .team-card img.circle {
+        margin-top: 15px;
+      }
+      .team-card-link {
+        display: block;
+        width: 23%;
+      }
+
+      .team-card-link .team-card {
+        width: 100%;
+      }
+
+      @media (max-width: 1024px) {
+        .team-card-link {
+          width: 48%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .team-card-link {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="Logo" />
+        CodeVertex.in
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>About CodeVertex</h1>
+      <p>
+        We are a leading digital solutions company delivering cutting-edge
+        websites, applications, and software solutions for businesses worldwide.
+      </p>
+    </section>
+
+    <!-- About Us Accordion -->
+    <section class="about">
+      <h2>About Us</h2>
+      <div class="accordion">Our Story</div>
+      <div class="accordion-content">
+        <p>
+          CodeVertex was founded with a mission to deliver top-notch digital
+          solutions that drive business growth and innovation.
+        </p>
+      </div>
+
+      <div class="accordion">Our Mission</div>
+      <div class="accordion-content">
+        <p>
+          To empower businesses with technology-driven solutions that increase
+          efficiency, engagement, and revenue.
+        </p>
+      </div>
+
+      <div class="accordion">Our Vision</div>
+      <div class="accordion-content">
+        <p>
+          To be the most trusted digital solutions partner, renowned for
+          innovation, quality, and reliability.
+        </p>
+      </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="team">
+      <h2>Our Team</h2>
+
+      <div class="team-cards">
+        <a href="sparsh.html" class="team-card-link">
+          <div class="team-card">
+            <img
+              src="cropped_circle_image (1).png"
+              alt="Sparsh Rajput - CEO CodeVertex"
+              class="circle"
+              style="width: 200px; height: 200px"
+            />
+            <h3>Sparsh Rajput</h3>
+            <p>CEO & Founder</p>
+          </div>
+        </a>
+
+        <a href="developer.html" class="team-card-link">
+          <div class="team-card">
+            <img src="a.webp" alt="Lead Developer at CodeVertex" />
+            <h3></h3>
+            <p>Lead Developer</p>
+          </div>
+        </a>
+
+        <a href="manager.html" class="team-card-link">
+          <div class="team-card">
+            <img src="a.webp" alt="Project Manager at CodeVertex" />
+            <h3></h3>
+            <p>Project Manager</p>
+          </div>
+        </a>
+
+        <a href="designer.html" class="team-card-link">
+          <div class="team-card">
+            <img src="a.webp" alt="UI UX Designer at CodeVertex" />
+            <h3></h3>
+            <p>UI/UX Designer</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline">
+      <h2>Company Timeline</h2>
+      <div class="timeline-item">
+        <h3>2024</h3>
+        <p>Company founded by a team of passionate developers.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>2024</h3>
+        <p>Launched first major client project and expanded team.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>2025</h3>
+        <p>Opened new offices and grew to 50+ employees.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>2026</h3>
+        <p>Recognized as one of the top digital solution companies.</p>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <h2>Our Achievements</h2>
+      <div class="stats-grid">
+        <div class="stat" data-target="20">0<br />Projects</div>
+        <div class="stat" data-target="10">0<br />Clients</div>
+        <div class="stat" data-target="5">0<br />Team Members</div>
+        <div class="stat" data-target="2">0<br />Awards</div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 CodeVertex.in | All rights reserved.</footer>
+
+    <!-- JS INTERACTIVITY -->
+    <script>
+      // Accordion
+      const accordions = document.querySelectorAll(".accordion");
+      accordions.forEach((acc) => {
+        acc.addEventListener("click", () => {
+          acc.classList.toggle("active");
+          const panel = acc.nextElementSibling;
+          panel.style.maxHeight = panel.style.maxHeight
+            ? null
+            : panel.scrollHeight + "px";
+        });
+      });
+
+      // Animated Stats
+      const stats = document.querySelectorAll(".stat");
+      stats.forEach((stat) => {
+        const updateCount = () => {
+          const target = +stat.getAttribute("data-target");
+          const count = +stat.innerText.split("\n")[0];
+          const increment = target / 100;
+          if (count < target) {
+            stat.innerHTML = `${Math.ceil(count + increment)}<br>${
+              stat.innerHTML.split("<br>")[1]
+            }`;
+            setTimeout(updateCount, 20);
+          } else {
+            stat.innerHTML = `${target}<br>${stat.innerHTML.split("<br>")[1]}`;
+          }
+        };
+        updateCount();
+      });
+
+      // Simple scroll reveal
+      const timelineItems = document.querySelectorAll(".timeline-item");
+      const reveal = () => {
+        const triggerBottom = window.innerHeight * 0.9;
+        timelineItems.forEach((item) => {
+          const top = item.getBoundingClientRect().top;
+          if (top < triggerBottom) {
+            item.style.transform = "translateX(0)";
+            item.style.opacity = "1";
+          }
+        });
+      };
+      window.addEventListener("scroll", reveal);
+      timelineItems.forEach((item) => {
+        item.style.transform = "translateX(-50px)";
+        item.style.opacity = "0";
+        item.style.transition = "all 0.6s ease-out";
+      });
+      reveal();
+    </script>
+  </body>
+</html>
